@@ -12,6 +12,18 @@
       "published_at": "2026-06-14T11:19:44Z",
       "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/aim/1.0.0/aim.wasm",
       "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/aim/1.0.0/parameters.md"
+    },
+    {
+      "name": "bs",
+      "version": "1.0.0",
+      "sha256": "6ec9def328931909f2c3253de65fe9de7a5026f24e412d923b1278b738c53953",
+      "file": "bs/1.0.0/bs.wasm",
+      "parameters": "bs/1.0.0/parameters.md",
+      "description": "BS (buy_sell) bidirectional grid strategy compiled to a WASM module for the strategy-worker. Vendor-published, installed into the customer DB as a versioned binary.",
+      "release_notes": "",
+      "published_at": "2026-06-14T11:23:14Z",
+      "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/bs/1.0.0/bs.wasm",
+      "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/bs/1.0.0/parameters.md"
     }
   ]
 }
