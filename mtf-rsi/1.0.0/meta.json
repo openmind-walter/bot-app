@@ -1,0 +1,10 @@
+{
+  "name": "mtf-rsi",
+  "version": "1.0.0",
+  "sha256": "0e93ec71af9e38d5daa1553bb9f834ce89ac3cde7c518a14093184f71a1e8b47",
+  "file": "mtf-rsi/1.0.0/mtf-rsi.wasm",
+  "parameters": "mtf-rsi/1.0.0/parameters.md",
+  "description": "Multi-timeframe RSI strategy compiled to a WASM module for the strategy-worker. HTF RSI trend filter + LTF RSI snap-back entry, reversing on the opposite signal.",
+  "release_notes": "",
+  "published_at": "2026-06-15T23:40:45Z"
+}
