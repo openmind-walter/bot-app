@@ -1,0 +1,10 @@
+{
+  "name": "stochastic",
+  "version": "1.0.0",
+  "sha256": "44903759f61efbedf5991af569a7c7418cfb1a3be6bdf31c16122fdce529d584",
+  "file": "stochastic/1.0.0/stochastic.wasm",
+  "parameters": "stochastic/1.0.0/parameters.md",
+  "description": "Single-timeframe slow-stochastic crossing strategy compiled to a WASM module. Buys when %D crosses up through oversold, sells when it crosses down through overbought; only ever opens (no close/offset).",
+  "release_notes": "",
+  "published_at": "2026-06-16T12:01:32Z"
+}
