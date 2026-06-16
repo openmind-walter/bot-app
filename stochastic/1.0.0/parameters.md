@@ -7,6 +7,7 @@ form:
       - ["k_period", "smooth_k"]
       - ["d_period", "d_period"]
       - ["oversold", "overbought"]
+      - ["short_allowed", "short_allowed"]
       - ["submit", "submit"]
 
   fields:
@@ -83,6 +84,13 @@ form:
         min: 0
         max: 100
 
+    - id: short_allowed
+      label: "Allow short (margin/futures)"
+      component: checkbox
+      bind: "params.short_allowed"
+      default: false
+      help: "Off for spot: a SELL is capped at the held quantity and never takes the net position short."
+
   submit:
     id: submit
     label: "Save parameters"
@@ -113,7 +121,10 @@ Because the engine sees only each bar's close (no high/low), the oscillator is
 | `d_period`     | %D period        | 3       | SMA smoothing slow %K into %D.                     |
 | `oversold`     | Oversold         | 20      | A %D cross up through this fires a BUY.            |
 | `overbought`   | Overbought       | 80      | A %D cross down through this fires a SELL.         |
+| `short_allowed`| Allow short      | false   | Off (spot): SELLs cap at holdings, never go short. |
 
-> **Note:** sells are uncapped, so the net position may go short. The strategy
-> advances per-bar scratch (`bots.indicator_state`) every candle via the worker's
-> `step` path — see `strategy-core/src/stochastic.rs` (`on_bar`).
+> **Note:** on spot (`short_allowed` off, the default) a SELL is capped at the
+> held quantity, so the net position never goes below 0. Enable it only for
+> margin/futures. The strategy advances per-bar scratch (`bots.indicator_state`)
+> every candle via the worker's `step` path — see
+> `strategy-core/src/stochastic.rs` (`on_bar`).
