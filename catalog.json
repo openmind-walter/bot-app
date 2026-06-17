@@ -84,6 +84,18 @@
       "published_at": "2026-06-17T11:42:43Z",
       "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/stochastic/1.1.0/stochastic.wasm",
       "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/stochastic/1.1.0/parameters.md"
+    },
+    {
+      "name": "stochastic",
+      "version": "1.1.1",
+      "sha256": "759d1c7dd662a77e137f73e9993c262c8849cd99fa34221a931b0a1503d11dbe",
+      "file": "stochastic/1.1.1/stochastic.wasm",
+      "parameters": "stochastic/1.1.1/parameters.md",
+      "description": "Single-timeframe slow-stochastic crossing strategy compiled to a WASM module. Buys when %D crosses up through oversold, sells when it crosses down through overbought; only ever opens (no close/offset). Per-signal size is a percent of remaining cash (default 5%) or a fixed dollar amount.",
+      "release_notes": "",
+      "published_at": "2026-06-17T11:51:13Z",
+      "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/stochastic/1.1.1/stochastic.wasm",
+      "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/stochastic/1.1.1/parameters.md"
     }
   ]
 }
