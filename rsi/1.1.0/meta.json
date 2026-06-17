@@ -1,0 +1,10 @@
+{
+  "name": "rsi",
+  "version": "1.1.0",
+  "sha256": "6db43394b4c4230e6d2e3c3ca826f205604c11f4e2faad5d80fb7cf1e6d9ac59",
+  "file": "rsi/1.1.0/rsi.wasm",
+  "parameters": "rsi/1.1.0/parameters.md",
+  "description": "Single-timeframe RSI crossing strategy compiled to a WASM module. Buys when RSI crosses up through oversold, sells when it crosses down through overbought; only ever opens (no close/offset).",
+  "release_notes": "",
+  "published_at": "2026-06-17T12:13:01Z"
+}
