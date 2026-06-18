@@ -26,6 +26,30 @@
       "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/bs/1.0.0/parameters.md"
     },
     {
+      "name": "macd",
+      "version": "1.0.0",
+      "sha256": "35d34b7569e0a6aff320c3f0a860c7ba558986791fa1b545f9968d73373eb9f6",
+      "file": "macd/1.0.0/macd.wasm",
+      "parameters": "macd/1.0.0/parameters.md",
+      "description": "MACD crossover strategy compiled to a WASM module. Buys when the MACD line crosses up through its signal line, sells when it crosses down; only ever opens (no close/offset).",
+      "release_notes": "",
+      "published_at": "2026-06-18T13:49:07Z",
+      "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macd/1.0.0/macd.wasm",
+      "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macd/1.0.0/parameters.md"
+    },
+    {
+      "name": "macross",
+      "version": "1.0.0",
+      "sha256": "397005159ec0ee13f7365b2e17ccca667441cfa26c8772c74b3f363fd76ca0fa",
+      "file": "macross/1.0.0/macross.wasm",
+      "parameters": "macross/1.0.0/parameters.md",
+      "description": "Two-moving-average crossover strategy compiled to a WASM module. Buys when the fast SMA crosses up through the slow SMA (golden cross), sells when it crosses down (death cross); only ever opens (no close/offset).",
+      "release_notes": "",
+      "published_at": "2026-06-18T13:49:08Z",
+      "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macross/1.0.0/macross.wasm",
+      "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macross/1.0.0/parameters.md"
+    },
+    {
       "name": "mtf-rsi",
       "version": "1.0.0",
       "sha256": "a73bef35112a1ce9fe3d6a21fa96d6e821306749cbe11382a22f189c51c48d77",

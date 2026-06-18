@@ -1,0 +1,10 @@
+{
+  "name": "macd",
+  "version": "1.0.0",
+  "sha256": "35d34b7569e0a6aff320c3f0a860c7ba558986791fa1b545f9968d73373eb9f6",
+  "file": "macd/1.0.0/macd.wasm",
+  "parameters": "macd/1.0.0/parameters.md",
+  "description": "MACD crossover strategy compiled to a WASM module. Buys when the MACD line crosses up through its signal line, sells when it crosses down; only ever opens (no close/offset).",
+  "release_notes": "",
+  "published_at": "2026-06-18T13:49:07Z"
+}
