@@ -1,10 +1,10 @@
 {
   "name": "stochastic",
   "version": "1.1.1",
-  "sha256": "759d1c7dd662a77e137f73e9993c262c8849cd99fa34221a931b0a1503d11dbe",
+  "sha256": "c42eea1cca7034683e11f50471ee42b4ab5edc94c4ef4af5b11794c85b217ff3",
   "file": "stochastic/1.1.1/stochastic.wasm",
   "parameters": "stochastic/1.1.1/parameters.md",
   "description": "Single-timeframe slow-stochastic crossing strategy compiled to a WASM module. Buys when %D crosses up through oversold, sells when it crosses down through overbought; only ever opens (no close/offset). Per-signal size is a percent of remaining cash (default 5%) or a fixed dollar amount.",
   "release_notes": "",
-  "published_at": "2026-06-17T11:51:13Z"
+  "published_at": "2026-06-18T13:36:01Z"
 }
