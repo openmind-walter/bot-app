@@ -1,10 +1,10 @@
 {
   "name": "aim",
   "version": "1.0.0",
-  "sha256": "6fb693fd6868ef8d4a9bdeacc38ca573e779b4b0217e2c4cf6270086d214d8e7",
+  "sha256": "31d549aecf61c6dcf18cc20d5a21e5443fbec786ae8c8b8b90510cb1aaf94281",
   "file": "aim/1.0.0/aim.wasm",
   "parameters": "aim/1.0.0/parameters.md",
   "description": "AIM strategy compiled to a WASM module for the strategy-worker. Vendor-published, installed into the customer DB as a versioned binary.",
   "release_notes": "",
-  "published_at": "2026-06-14T11:19:44Z"
+  "published_at": "2026-06-18T13:35:12Z"
 }
