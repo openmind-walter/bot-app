@@ -1,0 +1,10 @@
+{
+  "name": "rsi-bb",
+  "version": "1.2.0",
+  "sha256": "9fd5c649a17cb40aadb741b06552e66e82e70e2d46ca0de304bc95e004d65917",
+  "file": "rsi-bb/1.2.0/rsi-bb.wasm",
+  "parameters": "rsi-bb/1.2.0/parameters.md",
+  "description": "RSI + Bollinger Band crossing strategy compiled to a WASM module. Buys when RSI crosses up through oversold and price touches/breaches the lower band; sells when RSI crosses down through overbought and price touches/breaches the upper band. Only ever opens (no close/offset).",
+  "release_notes": "",
+  "published_at": "2026-06-21T02:47:08Z"
+}
