@@ -86,6 +86,18 @@
       "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macross/1.1.0/parameters.md"
     },
     {
+      "name": "macross",
+      "version": "1.2.0",
+      "sha256": "cd3580849bb5681752c22341e5ba665e9e509322f5202e3f7b4189f9a42be1d4",
+      "file": "macross/1.2.0/macross.wasm",
+      "parameters": "macross/1.2.0/parameters.md",
+      "description": "Two-moving-average crossover strategy compiled to a WASM module. Buys when the fast SMA crosses up through the slow SMA (golden cross), sells when it crosses down (death cross); an invert flag swaps those sides. Only ever opens (no close/offset).",
+      "release_notes": "",
+      "published_at": "2026-06-21T04:53:49Z",
+      "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macross/1.2.0/macross.wasm",
+      "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macross/1.2.0/parameters.md"
+    },
+    {
       "name": "mtf-rsi",
       "version": "1.0.0",
       "sha256": "a73bef35112a1ce9fe3d6a21fa96d6e821306749cbe11382a22f189c51c48d77",
