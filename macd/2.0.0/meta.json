@@ -1,0 +1,10 @@
+{
+  "name": "macd",
+  "version": "2.0.0",
+  "sha256": "428a3882d92d4946ac7eb3e338cf0af975d31d378de33179c1084e49d1095f1e",
+  "file": "macd/2.0.0/macd.wasm",
+  "parameters": "macd/2.0.0/parameters.md",
+  "description": "MACD strategy compiled to a WASM module. Trades either the MACD/signal-line crossover (default) or the signal line crossing zero, selectable via cross_mode; opens and closes one position, with close_and_reverse a close also reverses.",
+  "release_notes": "",
+  "published_at": "2026-06-21T06:25:51Z"
+}

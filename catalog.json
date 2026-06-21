@@ -62,6 +62,18 @@
       "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macd/1.2.0/parameters.md"
     },
     {
+      "name": "macd",
+      "version": "2.0.0",
+      "sha256": "428a3882d92d4946ac7eb3e338cf0af975d31d378de33179c1084e49d1095f1e",
+      "file": "macd/2.0.0/macd.wasm",
+      "parameters": "macd/2.0.0/parameters.md",
+      "description": "MACD strategy compiled to a WASM module. Trades either the MACD/signal-line crossover (default) or the signal line crossing zero, selectable via cross_mode; opens and closes one position, with close_and_reverse a close also reverses.",
+      "release_notes": "",
+      "published_at": "2026-06-21T06:25:51Z",
+      "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macd/2.0.0/macd.wasm",
+      "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/macd/2.0.0/parameters.md"
+    },
+    {
       "name": "macross",
       "version": "1.0.0",
       "sha256": "397005159ec0ee13f7365b2e17ccca667441cfa26c8772c74b3f363fd76ca0fa",
