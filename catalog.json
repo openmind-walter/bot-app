@@ -122,6 +122,18 @@
       "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/mtf-rsi/1.1.0/parameters.md"
     },
     {
+      "name": "mtf-rsi",
+      "version": "1.2.0",
+      "sha256": "fe62917a5ef7495289fe0837fe5126482e0e6c150facbadd4edc008527553a55",
+      "file": "mtf-rsi/1.2.0/mtf-rsi.wasm",
+      "parameters": "mtf-rsi/1.2.0/parameters.md",
+      "description": "Multi-timeframe RSI strategy compiled to a WASM module for the strategy-worker. HTF RSI trend filter + LTF RSI snap-back entry, reversing on the opposite signal.",
+      "release_notes": "",
+      "published_at": "2026-06-21T04:54:01Z",
+      "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/mtf-rsi/1.2.0/mtf-rsi.wasm",
+      "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/mtf-rsi/1.2.0/parameters.md"
+    },
+    {
       "name": "rsi",
       "version": "1.0.0",
       "sha256": "984fe463620f05580104f65fdefe939b1efc8aa5c76f14cbea725709d84a201e",
