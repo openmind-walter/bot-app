@@ -182,6 +182,18 @@
       "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/rsi/2.0.0/parameters.md"
     },
     {
+      "name": "rsi",
+      "version": "2.1.0",
+      "sha256": "813faa40b419264f96c4b5d9bf5942e8e8ecec1eb6a239a94d0a213247398992",
+      "file": "rsi/2.1.0/rsi.wasm",
+      "parameters": "rsi/2.1.0/parameters.md",
+      "description": "Single-timeframe RSI crossing strategy compiled to a WASM module. Buys when RSI crosses up through oversold, sells when it crosses down through overbought; opens and closes one position. With close_and_reverse a close also opens the opposite side (full reverse); otherwise it closes to flat.",
+      "release_notes": "",
+      "published_at": "2026-06-21T05:16:50Z",
+      "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/rsi/2.1.0/rsi.wasm",
+      "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/rsi/2.1.0/parameters.md"
+    },
+    {
       "name": "rsi-bb",
       "version": "1.0.0",
       "sha256": "b44c6d6a2e9cf0ed1140e0a5e33d78475f61bccb840ef4b8b5b12297aff3d49f",
