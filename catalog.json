@@ -242,6 +242,18 @@
       "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/rsi-bb/1.3.0/parameters.md"
     },
     {
+      "name": "rsi-bb",
+      "version": "2.0.0",
+      "sha256": "ba31ee69d10ef4a0b4687f06755bb0b36df4c645888ebf59825676b9aea5b6f4",
+      "file": "rsi-bb/2.0.0/rsi-bb.wasm",
+      "parameters": "rsi-bb/2.0.0/parameters.md",
+      "description": "RSI + Bollinger Band crossing strategy compiled to a WASM module. Buys when RSI crosses up through oversold and price touches/breaches the lower band; sells when RSI crosses down through overbought and price touches/breaches the upper band. Opens and closes one position; with close_and_reverse a close also reverses.",
+      "release_notes": "",
+      "published_at": "2026-06-21T06:25:28Z",
+      "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/rsi-bb/2.0.0/rsi-bb.wasm",
+      "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/rsi-bb/2.0.0/parameters.md"
+    },
+    {
       "name": "stochastic",
       "version": "1.0.0",
       "sha256": "af53201f271760de7026b3541a2f620853dc864f6c10b5505c4f23a41e08632b",
