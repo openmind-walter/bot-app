@@ -1,0 +1,10 @@
+{
+  "name": "macross",
+  "version": "2.0.0",
+  "sha256": "704f27cf5fecd6090a3b47fdc893692ab039228eea111acf78a2eca9e44777af",
+  "file": "macross/2.0.0/macross.wasm",
+  "parameters": "macross/2.0.0/parameters.md",
+  "description": "Two-moving-average crossover strategy compiled to a WASM module. Buys when the fast SMA crosses up through the slow SMA (golden cross), sells when it crosses down (death cross); an invert flag swaps those sides. Opens and closes one position; with close_and_reverse a close also reverses.",
+  "release_notes": "",
+  "published_at": "2026-06-21T06:26:02Z"
+}
