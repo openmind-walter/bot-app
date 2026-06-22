@@ -1,0 +1,10 @@
+{
+  "name": "markov",
+  "version": "1.0.0",
+  "sha256": "7add6a1ceb1ecc75bd17b927f0a877c7e48b18166d49773ff69d781b13632bb8",
+  "file": "markov/1.0.0/markov.wasm",
+  "parameters": "markov/1.0.0/parameters.md",
+  "description": "Markov-chain transition-probability strategy compiled to a WASM module. Discretizes each bar's return into Down/Flat/Up states, learns a 3x3 transition-count matrix online, and trades the current state's forecast: long when P(next=Up) and short when P(next=Down) clear their thresholds. Opens and closes one position, with close_and_reverse a close also reverses.",
+  "release_notes": "",
+  "published_at": "2026-06-22T13:03:27Z"
+}
