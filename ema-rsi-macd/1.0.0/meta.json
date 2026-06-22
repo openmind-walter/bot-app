@@ -1,0 +1,10 @@
+{
+  "name": "ema-rsi-macd",
+  "version": "1.0.0",
+  "sha256": "6e76aaf64942fab3e2aa474d09ad852ac47f7ff6f9ef3537a23af3b9d67f5218",
+  "file": "ema-rsi-macd/1.0.0/ema-rsi-macd.wasm",
+  "parameters": "ema-rsi-macd/1.0.0/parameters.md",
+  "description": "EMA + RSI + MACD strategy compiled to a WASM module. A MACD/signal-line crossover gated by an EMA trend filter (slope + price side) and the RSI midline; opens and closes one position, with close_and_reverse a close also reverses.",
+  "release_notes": "",
+  "published_at": "2026-06-22T12:25:02Z"
+}
