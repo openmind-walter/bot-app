@@ -9,6 +9,7 @@ form:
       - ["bear_to_bull", "bear_to_bear", "bear_to_stagnant"]
       - ["stagnant_to_bull", "stagnant_to_bear", "stagnant_to_stagnant"]
       - ["short_allowed", "short_allowed", "short_allowed"]
+      - ["invert", "invert", "invert"]
       - ["require_price_improvement", "require_price_improvement", "require_price_improvement"]
       - ["submit", "submit", "submit"]
 
@@ -166,6 +167,13 @@ form:
       default: false
       help: "Whether the strategy may hold a short. Off for spot: a Bear target only closes an open long (down to flat) and from flat HOLDs. On: a Bear target opens/holds a short and a Bull→Bear flip reverses through flat."
 
+    - id: invert
+      label: "Invert signals (contrarian)"
+      component: checkbox
+      bind: "params.invert"
+      default: false
+      help: "Trade against the prediction: a Bull prediction targets a short and a Bear prediction a long (Stagnant still targets flat). Equivalent to swapping Buy and Sell on every order."
+
     - id: require_price_improvement
       label: "Require price improvement"
       component: checkbox
@@ -221,6 +229,7 @@ Bear target only closes an open long.
 | `stagnant_to_bear` | Stagnant → Bear | 0.3 | P(next Bear \| Stagnant). |
 | `stagnant_to_stagnant` | Stagnant → Stagnant | 0.3 | P(next Stagnant \| Stagnant). |
 | `short_allowed` | Allow short | false | Whether a short may be held. Off (spot): a Bear target only closes a long. |
+| `invert` | Invert signals | false | Contrarian mode: Bull targets a short and Bear a long (Stagnant still flat). Swaps Buy↔Sell on every order. |
 | `require_price_improvement` | Require price improvement | false | On: an order (by its side) must improve on the last opposite-side fill, and the last same-side fill when the prior action matched; otherwise it's suppressed. |
 
 > **Note:** each row (Bull / Bear / Stagnant) should sum to ~1; any shortfall
