@@ -5,11 +5,11 @@ form:
     areas:
       - ["initial_cash", "trade_mode"]
       - ["trade_value", "trade_pct"]
-      - ["state_threshold", "min_samples"]
-      - ["buy_prob", "sell_prob"]
-      - ["short_allowed", "close_and_reverse"]
-      - ["require_price_improvement", "require_price_improvement"]
-      - ["submit", "submit"]
+      - ["bull_to_bull", "bull_to_bear", "bull_to_stagnant"]
+      - ["bear_to_bull", "bear_to_bear", "bear_to_stagnant"]
+      - ["stagnant_to_bull", "stagnant_to_bear", "stagnant_to_stagnant"]
+      - ["short_allowed", "short_allowed", "short_allowed"]
+      - ["submit", "submit", "submit"]
 
   fields:
     - id: initial_cash
@@ -58,43 +58,100 @@ form:
         required: true
         min: 0
 
-    - id: state_threshold
-      label: "State threshold (return fraction)"
+    - id: bull_to_bull
+      label: "Bull → Bull"
       component: number
-      bind: "params.state_threshold"
-      default: 0.002
-      help: "Half-width of the Flat return band as a fraction (0.002 = 0.2%). A bar return above +threshold is classed Up, below −threshold Down, otherwise Flat. Larger values class more bars as Flat."
-      validation:
-        required: true
-        min: 0
-
-    - id: min_samples
-      label: "Min transitions (warmup)"
-      component: number
-      bind: "params.min_samples"
-      default: 20
-      help: "Minimum observed transitions in the current state's row before its forecast is trusted. Until the row reaches this count the bar holds."
-      validation:
-        required: true
-        min: 1
-
-    - id: buy_prob
-      label: "Buy probability"
-      component: number
-      bind: "params.buy_prob"
-      default: 0.55
-      help: "Minimum forecast probability of an Up next state (and Up must dominate Down) to fire a long. Conventionally above 0.5."
+      bind: "params.bull_to_bull"
+      default: 0.7
+      help: "Probability the next state is Bull given the current state is Bull. The Bull row should sum to ~1."
       validation:
         required: true
         min: 0
         max: 1
 
-    - id: sell_prob
-      label: "Sell probability"
+    - id: bull_to_bear
+      label: "Bull → Bear"
       component: number
-      bind: "params.sell_prob"
-      default: 0.55
-      help: "Minimum forecast probability of a Down next state (and Down must dominate Up) to fire a short. Conventionally above 0.5."
+      bind: "params.bull_to_bear"
+      default: 0.2
+      help: "Probability the next state is Bear given the current state is Bull."
+      validation:
+        required: true
+        min: 0
+        max: 1
+
+    - id: bull_to_stagnant
+      label: "Bull → Stagnant"
+      component: number
+      bind: "params.bull_to_stagnant"
+      default: 0.1
+      help: "Probability the next state is Stagnant given the current state is Bull."
+      validation:
+        required: true
+        min: 0
+        max: 1
+
+    - id: bear_to_bull
+      label: "Bear → Bull"
+      component: number
+      bind: "params.bear_to_bull"
+      default: 0.3
+      help: "Probability the next state is Bull given the current state is Bear. The Bear row should sum to ~1."
+      validation:
+        required: true
+        min: 0
+        max: 1
+
+    - id: bear_to_bear
+      label: "Bear → Bear"
+      component: number
+      bind: "params.bear_to_bear"
+      default: 0.5
+      help: "Probability the next state is Bear given the current state is Bear."
+      validation:
+        required: true
+        min: 0
+        max: 1
+
+    - id: bear_to_stagnant
+      label: "Bear → Stagnant"
+      component: number
+      bind: "params.bear_to_stagnant"
+      default: 0.2
+      help: "Probability the next state is Stagnant given the current state is Bear."
+      validation:
+        required: true
+        min: 0
+        max: 1
+
+    - id: stagnant_to_bull
+      label: "Stagnant → Bull"
+      component: number
+      bind: "params.stagnant_to_bull"
+      default: 0.4
+      help: "Probability the next state is Bull given the current state is Stagnant. The Stagnant row should sum to ~1."
+      validation:
+        required: true
+        min: 0
+        max: 1
+
+    - id: stagnant_to_bear
+      label: "Stagnant → Bear"
+      component: number
+      bind: "params.stagnant_to_bear"
+      default: 0.3
+      help: "Probability the next state is Bear given the current state is Stagnant."
+      validation:
+        required: true
+        min: 0
+        max: 1
+
+    - id: stagnant_to_stagnant
+      label: "Stagnant → Stagnant"
+      component: number
+      bind: "params.stagnant_to_stagnant"
+      default: 0.3
+      help: "Probability the next state is Stagnant given the current state is Stagnant."
       validation:
         required: true
         min: 0
@@ -106,21 +163,7 @@ form:
       bind: "params.short_allowed"
       lock_on_edit: true
       default: false
-      help: "Whether the strategy may hold a short at all (open a short from flat, or — with Close & reverse — reverse a long into one). Off for spot: a SELL only ever closes an open long and from flat HOLDs."
-
-    - id: close_and_reverse
-      label: "Close & reverse"
-      component: checkbox
-      bind: "params.close_and_reverse"
-      default: false
-      help: "When a closing signal fires, also open the opposite side in the same fill (full reverse) instead of just closing to flat. Reversing a long into a short additionally requires Allow short."
-
-    - id: require_price_improvement
-      label: "Require price improvement"
-      component: checkbox
-      bind: "params.require_price_improvement"
-      default: false
-      help: "When on, a signal must improve on both the last opposite-side fill (SELL above the last BUY, BUY below the last SELL) and — when the previous action was the same side — the last same-side fill (each consecutive SELL higher than the prior SELL, each consecutive BUY lower than the prior BUY). A trade with no relevant reference yet is unconstrained."
+      help: "Whether the strategy may hold a short. Off for spot: a Bear target only closes an open long (down to flat) and from flat HOLDs. On: a Bear target opens/holds a short and a Bull→Bear flip reverses through flat."
 
   submit:
     id: submit
@@ -129,45 +172,49 @@ form:
 
 # Markov Chain Probability Transition Strategy Parameters
 
-A quantitative strategy that models price as a **Markov chain** over three discrete
-states. Each bar's return is classified by a symmetric threshold band:
+A quantitative strategy that models price as a **Markov chain** over three states —
+**Bull**, **Bear**, **Stagnant** — set each bar by the sign of the move
+(`close > prev` Bull, `close < prev` Bear, equal Stagnant).
 
-| State | Condition (`r` = bar return)                |
-| ----- | ------------------------------------------- |
-| Down  | `r < −state_threshold`                      |
-| Flat  | `−state_threshold ≤ r ≤ state_threshold`    |
-| Up    | `r > state_threshold`                       |
+Unlike a learned model the **transition matrix is fixed**: the nine `*_to_*`
+parameters are the probabilities of the next state given the current one. A
+deterministic counter cycling `1,2,…,9,0,…` selects the next state from the
+current state's row by cumulative-probability thresholds scaled to `0..10`:
 
-The strategy learns a 3×3 **transition-count matrix** online — how often a bar in
-each state is followed by a bar in each state — carried in per-bar scratch and
-cumulative over all history. Having just entered a state this bar, the matching
-row is the empirical forecast of the **next** bar, and the strategy trades it:
+```text
+row = (to_bull, to_bear, to_stagnant)        // for the current state
+if   counter <  to_bull·10            → Bull
+elif counter < (to_bull + to_bear)·10 → Bear
+else                                  → Stagnant
+```
 
-| Direction    | Fires when (row of the current state)                       |
-| ------------ | ----------------------------------------------------------- |
-| Long (Buy)   | `P(next = Up) ≥ buy_prob` and `P(Up) > P(Down)`             |
-| Short (Sell) | `P(next = Down) ≥ sell_prob` and `P(Down) > P(Up)`          |
+The predicted next state sets the **target position**, and the strategy moves to it:
 
-A row is only trusted once it has at least `min_samples` observed transitions; a
-cold row holds. The strategy **opens and closes** one position: a signal opposite
-the open position closes it, a matching signal HOLDs, and from flat a signal
-opens. With `close_and_reverse` a close also reverses into the opposite side;
-reversing into a short additionally needs `short_allowed`.
+| Predicted next state | Target   | Action                                            |
+| -------------------- | -------- | ------------------------------------------------- |
+| Bull                 | Long     | Open/keep a long (reverse a short through flat).  |
+| Bear                 | Short    | Open/keep a short (reverse a long). Spot: close long to flat. |
+| Stagnant             | Flat     | Close any open position.                          |
 
-| Parameter       | Label              | Default | Meaning                                            |
-| --------------- | ------------------ | ------- | -------------------------------------------------- |
-| `initial_cash`  | Initial cash ($)   | 1000    | Starting budget. Buys are capped by remaining cash.|
-| `trade_value`   | Trade value ($)    | 200     | Dollar notional per signal (fixed-amount sizing).  |
-| `state_threshold` | State threshold  | 0.002   | Flat-band half-width as a return fraction (0.2%).  |
-| `min_samples`   | Min transitions    | 20      | Row warmup before its forecast is trusted.         |
-| `buy_prob`      | Buy probability    | 0.55    | Min P(next=Up), Up dominant, to go long.           |
-| `sell_prob`     | Sell probability   | 0.55    | Min P(next=Down), Down dominant, to go short.      |
-| `short_allowed` | Allow short        | false   | Whether a short may be held at all. Off (spot): a SELL only closes a long.|
-| `close_and_reverse` | Close & reverse | false | On: a close also opens the opposite side (full reverse). Off: close to flat only. Reversing into a short also needs `short_allowed`.|
-| `require_price_improvement` | Require price improvement | false | On: SELL above the last BUY & (if prior was a SELL) above the last SELL; BUY below the last SELL & (if prior was a BUY) below the last BUY. |
+On spot (`short_allowed` off, the default) the strategy can't hold a short, so a
+Bear target only closes an open long.
 
-> **Note:** on spot (`short_allowed` off, the default) a SELL only closes an open
-> long — it never goes short, so `close_and_reverse` then has nothing to reverse
-> into. Enable both for a margin/futures always-in-market reversing bot. The
-> strategy advances per-bar scratch (`bots.indicator_state`) every candle via the
-> worker's `step` path — see `strategy-core/src/markov.rs` (`on_bar`).
+| Parameter | Label | Default | Meaning |
+| --- | --- | --- | --- |
+| `initial_cash` | Initial cash ($) | 1000 | Starting budget. Buys are capped by remaining cash. |
+| `trade_value` | Trade value ($) | 200 | Dollar notional per signal (fixed-amount sizing). |
+| `bull_to_bull` | Bull → Bull | 0.7 | P(next Bull \| Bull). |
+| `bull_to_bear` | Bull → Bear | 0.2 | P(next Bear \| Bull). |
+| `bull_to_stagnant` | Bull → Stagnant | 0.1 | P(next Stagnant \| Bull). |
+| `bear_to_bull` | Bear → Bull | 0.3 | P(next Bull \| Bear). |
+| `bear_to_bear` | Bear → Bear | 0.5 | P(next Bear \| Bear). |
+| `bear_to_stagnant` | Bear → Stagnant | 0.2 | P(next Stagnant \| Bear). |
+| `stagnant_to_bull` | Stagnant → Bull | 0.4 | P(next Bull \| Stagnant). |
+| `stagnant_to_bear` | Stagnant → Bear | 0.3 | P(next Bear \| Stagnant). |
+| `stagnant_to_stagnant` | Stagnant → Stagnant | 0.3 | P(next Stagnant \| Stagnant). |
+| `short_allowed` | Allow short | false | Whether a short may be held. Off (spot): a Bear target only closes a long. |
+
+> **Note:** each row (Bull / Bear / Stagnant) should sum to ~1; any shortfall
+> falls through to Stagnant by the cumulative rule. The strategy advances per-bar
+> scratch (`bots.indicator_state`) every candle via the worker's `step` path — see
+> `strategy-core/src/markov.rs` (`on_bar`).

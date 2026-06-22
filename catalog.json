@@ -136,12 +136,12 @@
     {
       "name": "markov",
       "version": "1.0.0",
-      "sha256": "7add6a1ceb1ecc75bd17b927f0a877c7e48b18166d49773ff69d781b13632bb8",
+      "sha256": "8c37ff3e4c603c3c88dbaa3813fc1cfc77790b9ff7c17bbf70f511a33d800af2",
       "file": "markov/1.0.0/markov.wasm",
       "parameters": "markov/1.0.0/parameters.md",
-      "description": "Markov-chain transition-probability strategy compiled to a WASM module. Discretizes each bar's return into Down/Flat/Up states, learns a 3x3 transition-count matrix online, and trades the current state's forecast: long when P(next=Up) and short when P(next=Down) clear their thresholds. Opens and closes one position, with close_and_reverse a close also reverses.",
+      "description": "Markov-chain transition-probability strategy compiled to a WASM module. Classifies each bar Bull/Bear/Stagnant by the sign of its move, then a fixed 3x3 transition matrix plus a cyclic counter pick the next state: Bull targets long, Bear short, Stagnant flat. Moves to the target each bar (open/hold/close/reverse); on spot a Bear target only closes a long.",
       "release_notes": "",
-      "published_at": "2026-06-22T13:03:27Z",
+      "published_at": "2026-06-22T13:13:44Z",
       "download_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/markov/1.0.0/markov.wasm",
       "parameters_url": "https://raw.githubusercontent.com/openmind-walter/bot-app/strategies/markov/1.0.0/parameters.md"
     },
