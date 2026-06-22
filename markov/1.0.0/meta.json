@@ -1,10 +1,10 @@
 {
   "name": "markov",
   "version": "1.0.0",
-  "sha256": "8c37ff3e4c603c3c88dbaa3813fc1cfc77790b9ff7c17bbf70f511a33d800af2",
+  "sha256": "d9b2cc35859a5b15450e82773f693034bbea81dd2be363eb80d19fb44596c1b2",
   "file": "markov/1.0.0/markov.wasm",
   "parameters": "markov/1.0.0/parameters.md",
   "description": "Markov-chain transition-probability strategy compiled to a WASM module. Classifies each bar Bull/Bear/Stagnant by the sign of its move, then a fixed 3x3 transition matrix plus a cyclic counter pick the next state: Bull targets long, Bear short, Stagnant flat. Moves to the target each bar (open/hold/close/reverse); on spot a Bear target only closes a long.",
   "release_notes": "",
-  "published_at": "2026-06-22T13:13:44Z"
+  "published_at": "2026-06-22T13:21:29Z"
 }

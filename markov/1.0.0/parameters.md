@@ -9,6 +9,7 @@ form:
       - ["bear_to_bull", "bear_to_bear", "bear_to_stagnant"]
       - ["stagnant_to_bull", "stagnant_to_bear", "stagnant_to_stagnant"]
       - ["short_allowed", "short_allowed", "short_allowed"]
+      - ["require_price_improvement", "require_price_improvement", "require_price_improvement"]
       - ["submit", "submit", "submit"]
 
   fields:
@@ -165,6 +166,13 @@ form:
       default: false
       help: "Whether the strategy may hold a short. Off for spot: a Bear target only closes an open long (down to flat) and from flat HOLDs. On: a Bear target opens/holds a short and a Bull→Bear flip reverses through flat."
 
+    - id: require_price_improvement
+      label: "Require price improvement"
+      component: checkbox
+      bind: "params.require_price_improvement"
+      default: false
+      help: "When on, an order (judged by its side) must improve on both the last opposite-side fill (SELL above the last BUY, BUY below the last SELL) and — when the previous action was the same side — the last same-side fill (each consecutive SELL higher than the prior SELL, each consecutive BUY lower than the prior BUY). An order that doesn't improve is suppressed and the position stays put. No relevant reference yet is unconstrained."
+
   submit:
     id: submit
     label: "Save parameters"
@@ -213,6 +221,7 @@ Bear target only closes an open long.
 | `stagnant_to_bear` | Stagnant → Bear | 0.3 | P(next Bear \| Stagnant). |
 | `stagnant_to_stagnant` | Stagnant → Stagnant | 0.3 | P(next Stagnant \| Stagnant). |
 | `short_allowed` | Allow short | false | Whether a short may be held. Off (spot): a Bear target only closes a long. |
+| `require_price_improvement` | Require price improvement | false | On: an order (by its side) must improve on the last opposite-side fill, and the last same-side fill when the prior action matched; otherwise it's suppressed. |
 
 > **Note:** each row (Bull / Bear / Stagnant) should sum to ~1; any shortfall
 > falls through to Stagnant by the cumulative rule. The strategy advances per-bar
